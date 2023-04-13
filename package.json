@@ -1,0 +1,10 @@
+{
+  "name": "com.tempest.usefulstuff",
+  "version": "1.0.0",
+  "displayName": "Useful Stuff",
+  "description": "A whole bunch of useful stuff...?",
+  "unity": "2021.3",
+  "unityRelease": "5f1",
+  "keywords": [ "useful", "stuff", "functions" ],
+  "author": "KingTempest07"
+}
