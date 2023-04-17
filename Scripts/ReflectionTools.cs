@@ -9,13 +9,13 @@ namespace Tempest.UsefulStuff {
             return System.Reflection.Assembly.GetCallingAssembly().GetTypes().Where(mytype => mytype.GetInterfaces().Contains(typeof(T))).ToList();
         }
 
-        public static bool TryGetStaticStringProperty(Type type, string propertyName, out string value) {
-            value = TryGetStaticStringProperty(type, propertyName);
+        public static bool TryGetStaticProperty(Type type, string propertyName, out object value) {
+            value = TryGetStaticProperty(type, propertyName);
             return value != null;
         }
-        public static string TryGetStaticStringProperty(Type type, string propertyName) {
+        public static object TryGetStaticProperty(Type type, string propertyName) {
             try {
-                return (string) type.GetProperty(propertyName).GetValue(null);
+                return type.GetProperty(propertyName).GetValue(null);
             }
             catch (Exception e) {
                 Debug.LogError($"Failed to get the \"{propertyName}\" property from type \"{type}.\" Make sure you input the correct property name and that the one you want is static. {e.Message}");

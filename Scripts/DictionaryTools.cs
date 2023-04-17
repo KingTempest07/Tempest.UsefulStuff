@@ -46,5 +46,11 @@ namespace Tempest.UsefulStuff {
             });
             return dict;
         }
+
+
+
+        public static T1 GetKeyByValue<T1, T2>(this Dictionary<T1, T2> dict, T2 value) {
+            return dict.FirstOrDefault(kvp => kvp.Value.Equals(value)).Key;
+        }
     }
 }
