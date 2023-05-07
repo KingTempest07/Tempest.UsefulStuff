@@ -5,8 +5,15 @@ using UnityEngine;
 
 namespace Tempest.UsefulStuff {
     public static class ReflectionTools {
-        public static List<Type> GetAllScriptsOfType<T>() {
-            return System.Reflection.Assembly.GetCallingAssembly().GetTypes().Where(mytype => mytype.GetInterfaces().Contains(typeof(T))).ToList();
+        public static Type[] GetAllScriptsOfType<T>() {
+            return GetAllTypesInAssembly().Where(type => typeof(T).IsInstanceOfType(type)).ToArray();
+        }
+        public static Type[] GetAllScriptsOfInterface<T>() {
+            return GetAllTypesInAssembly().Where(type => type.GetInterfaces().Contains(typeof(T))).ToArray();
+        }
+
+        public static Type[] GetAllTypesInAssembly() {
+            return System.Reflection.Assembly.GetCallingAssembly().GetTypes();
         }
 
         public static bool TryGetStaticProperty(Type type, string propertyName, out object value) {
