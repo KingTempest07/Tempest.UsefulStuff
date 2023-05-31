@@ -32,9 +32,9 @@ namespace Tempest.UsefulStuff {
                 Operations.multiplication => input * editAmount,
                 Operations.division => input / editAmount,
                 Operations.exponent => Mathf.Pow(input, editAmount),
-                // add Operations.root
+                Operations.root => throw new NotImplementedException(),
                 _ => throw new NotImplementedException()
-            };
+            };;
         }
     }
 }
