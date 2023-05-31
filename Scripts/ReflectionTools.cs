@@ -16,11 +16,7 @@ namespace Tempest.UsefulStuff {
             return System.Reflection.Assembly.GetCallingAssembly().GetTypes();
         }
 
-        public static bool TryGetStaticProperty(Type type, string propertyName, out object value) {
-            value = TryGetStaticProperty(type, propertyName);
-            return value != null;
-        }
-        public static object TryGetStaticProperty(Type type, string propertyName) {
+        public static object GetStaticProperty(Type type, string propertyName) {
             try {
                 return type.GetProperty(propertyName).GetValue(null);
             }
@@ -28,6 +24,10 @@ namespace Tempest.UsefulStuff {
                 Debug.LogError($"Failed to get the \"{propertyName}\" property from type \"{type}.\" Make sure you input the correct property name and that the one you want is static. {e.Message}");
                 return null;
             }
+        }
+        public static bool TryGetStaticProperty(Type type, string propertyName, out object value) {
+            value = type.GetProperty(propertyName).GetValue(null);
+            return value != null;
         }
     }
 }
