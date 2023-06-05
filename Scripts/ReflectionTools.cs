@@ -16,16 +16,16 @@ namespace Tempest.UsefulStuff {
             return System.Reflection.Assembly.GetCallingAssembly().GetTypes();
         }
 
-        public static object GetStaticProperty(Type type, string propertyName) {
+        public static object GetStaticProperty(this Type type, string propertyName) {
             try {
                 return type.GetProperty(propertyName).GetValue(null);
             }
             catch (Exception e) {
-                Debug.LogError($"Failed to get the \"{propertyName}\" property from type \"{type}.\" Make sure you input the correct property name and that the one you want is static. {e.Message}");
+                Debug.LogError($"Failed to get a static property by the name of \"{propertyName}\" from type \"{type}\". {e.Message}");
                 return null;
             }
         }
-        public static bool TryGetStaticProperty(Type type, string propertyName, out object value) {
+        public static bool TryGetStaticProperty(this Type type, string propertyName, out object value) {
             value = type.GetProperty(propertyName).GetValue(null);
             return value != null;
         }
