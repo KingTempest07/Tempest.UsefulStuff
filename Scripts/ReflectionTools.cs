@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Tempest.UsefulStuff {
     public static class ReflectionTools {
+        [Obsolete("Probably doesn't work")]
         public static Type[] GetAllScriptsOfType<T>() {
             return GetAllTypesInAssembly().Where(type => typeof(T).IsInstanceOfType(type)).ToArray();
         }
