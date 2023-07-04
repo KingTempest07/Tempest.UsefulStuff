@@ -1,4 +1,4 @@
-# UsefulStuff
+# DISCLAIMER
 
 This is just a Unity package for stuff that I might use in the future. 
 
