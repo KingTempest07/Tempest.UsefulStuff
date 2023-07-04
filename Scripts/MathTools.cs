@@ -1,4 +1,5 @@
 using System;
+
 using UnityEngine;
 
 namespace Tempest.UsefulStuff {
@@ -7,20 +8,8 @@ namespace Tempest.UsefulStuff {
             addition, subtraction, multiplication, division, exponent, root
         }
 
-        public static Operations GetOpposite(this Operations operation) {
-            return operation switch {
-                Operations.addition => Operations.subtraction,
-                Operations.subtraction => Operations.addition,
-                Operations.multiplication => Operations.division,
-                Operations.division => Operations.multiplication,
-                Operations.exponent => Operations.root,
-                Operations.root => Operations.exponent,
-                _ => throw new NotImplementedException()
-            };
-        }
-
         public static float PerformOperation(this float input, Operations operation, float editAmount) {
-            if(operation == Operations.division && editAmount == 0) {
+            if (operation == Operations.division && editAmount == 0) {
                 Debug.LogError("Attempted to divide by zero. Dividing by one instead.");
 
                 editAmount = 1f;
@@ -34,7 +23,20 @@ namespace Tempest.UsefulStuff {
                 Operations.exponent => Mathf.Pow(input, editAmount),
                 Operations.root => throw new NotImplementedException(),
                 _ => throw new NotImplementedException()
-            };;
+            };
+            ;
+        }
+
+        public static Operations GetOpposite(this Operations operation) {
+            return operation switch {
+                Operations.addition => Operations.subtraction,
+                Operations.subtraction => Operations.addition,
+                Operations.multiplication => Operations.division,
+                Operations.division => Operations.multiplication,
+                Operations.exponent => Operations.root,
+                Operations.root => Operations.exponent,
+                _ => throw new NotImplementedException()
+            };
         }
     }
 }

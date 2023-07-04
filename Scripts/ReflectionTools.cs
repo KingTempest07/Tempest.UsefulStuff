@@ -1,13 +1,13 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
+
 using UnityEngine;
 
 namespace Tempest.UsefulStuff {
     public static class ReflectionTools {
-        [Obsolete("Probably doesn't work")]
+        [Obsolete("Might not work")]
         public static Type[] GetAllScriptsOfType<T>() {
-            return GetAllTypesInAssembly().Where(type => typeof(T).IsInstanceOfType(type)).ToArray();
+            return GetAllTypesInAssembly().Where(type => typeof(T).IsAssignableFrom(type)).ToArray();
         }
         public static Type[] GetAllScriptsOfInterface<T>() {
             return GetAllTypesInAssembly().Where(type => type.GetInterfaces().Contains(typeof(T))).ToArray();
