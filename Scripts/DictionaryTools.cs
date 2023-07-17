@@ -10,9 +10,7 @@ namespace Tempest.UsefulStuff {
         /// </summary>
         public static Dictionary<T1, T2> Subtract<T1, T2>(this Dictionary<T1, T2> dict, Dictionary<T1, T2>.KeyCollection keysToRemove) {
             keysToRemove.ToList().ForEach(key => {
-                if (dict.ContainsKey(key)) {
-                    dict.Remove(key);
-                }
+                dict.Remove(key);
             });
             return dict;
         }
