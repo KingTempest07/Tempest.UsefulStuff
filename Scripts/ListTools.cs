@@ -10,5 +10,13 @@ namespace Tempest.UsefulStuff {
                 }
             });
         }
+
+        public static List<string> ToUpper(this List<string> list) {
+            for (int i = 0 ; i < list.Count ; i++) {
+                list[i] = list[i].ToUpper();
+            }
+
+            return list;
+        }
     }
 }

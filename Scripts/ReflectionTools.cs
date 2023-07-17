@@ -1,8 +1,6 @@
 using System;
 using System.Linq;
 
-using UnityEngine;
-
 namespace Tempest.UsefulStuff {
     public static class ReflectionTools {
         [Obsolete("Might not work")]
@@ -22,8 +20,7 @@ namespace Tempest.UsefulStuff {
                 return type.GetProperty(propertyName).GetValue(null);
             }
             catch (Exception e) {
-                Debug.LogError($"Failed to get a static property by the name of \"{propertyName}\" from type \"{type}\". {e.Message}");
-                return null;
+                throw new Exception($"Failed to get a static property by the name of \"{propertyName}\" from type \"{type}\". {e.Message}");
             }
         }
         public static bool TryGetStaticProperty(this Type type, string propertyName, out object value) {

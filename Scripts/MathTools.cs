@@ -1,7 +1,5 @@
 using System;
 
-using UnityEngine;
-
 namespace Tempest.UsefulStuff {
     public static class MathTools {
         public enum Operations {
@@ -10,7 +8,7 @@ namespace Tempest.UsefulStuff {
 
         public static float PerformOperation(this float input, Operations operation, float editAmount) {
             if (operation == Operations.division && editAmount == 0) {
-                Debug.LogError("Attempted to divide by zero. Dividing by one instead.");
+                Console.WriteLine("Attempted to divide by zero. Dividing by one instead.");
 
                 editAmount = 1f;
             }
@@ -20,7 +18,7 @@ namespace Tempest.UsefulStuff {
                 Operations.subtraction => input - editAmount,
                 Operations.multiplication => input * editAmount,
                 Operations.division => input / editAmount,
-                Operations.exponent => Mathf.Pow(input, editAmount),
+                Operations.exponent => (float) Math.Pow(input, editAmount),
                 Operations.root => throw new NotImplementedException(),
                 _ => throw new NotImplementedException()
             };
